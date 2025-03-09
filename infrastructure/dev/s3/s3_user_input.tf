@@ -16,8 +16,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_fastq_lifecycle
   bucket = aws_s3_bucket.dev_user_input_fastq.id
 
   rule {
-    id     = "data-lifecycle"
+    id = "data-lifecycle"
     status = "Enabled"
+
+    # Explicitly set storage class to STANDARD
+    transition {
+      days = 0
+      storage_class = "STANDARD"
+    }
 
     expiration {
         days = local.lifecycle_configs.short_term.expiration_days
@@ -48,8 +54,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_bam_lifecycle" 
   bucket = aws_s3_bucket.dev_user_input_bam.id
 
   rule {
-    id     = "data-lifecycle"
+    id = "data-lifecycle"
     status = "Enabled"
+
+    # Explicitly set storage class to STANDARD
+    transition {
+      days = 0
+      storage_class = "STANDARD"
+    }
 
     expiration {
         days = local.lifecycle_configs.short_term.expiration_days
@@ -80,8 +92,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_vcf_lifecycle" 
   bucket = aws_s3_bucket.dev_user_input_vcf.id
 
   rule {
-    id     = "data-lifecycle"
+    id = "data-lifecycle"
     status = "Enabled"
+
+    # Explicitly set storage class to STANDARD
+    transition {
+      days = 0
+      storage_class = "STANDARD"
+    }
 
     expiration {
         days = local.lifecycle_configs.short_term.expiration_days
