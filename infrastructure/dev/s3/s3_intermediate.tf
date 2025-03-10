@@ -3,7 +3,7 @@
 # -----------------------------
 resource "aws_s3_bucket" "dev_trimmed_fastq" {
   bucket = "dev-mosaic-trimmed-fastq"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "dev_trimmed_fastq" {
 
 resource "aws_s3_bucket_versioning" "dev_trimmed_fastq_versioning" {
   bucket = aws_s3_bucket.dev_trimmed_fastq.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -58,7 +58,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_trimmed_fastq_lifecycle" {
       days          = local.short_term_lifecycle_rule.transition.days
       storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
-    
+
     expiration {
       days = local.short_term_lifecycle_rule.expiration.days
     }
@@ -66,7 +66,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_trimmed_fastq_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_trimmed_fastq_notification" {
-  bucket = aws_s3_bucket.dev_trimmed_fastq.id
+  bucket      = aws_s3_bucket.dev_trimmed_fastq.id
   eventbridge = true
 }
 
@@ -75,7 +75,7 @@ resource "aws_s3_bucket_notification" "dev_trimmed_fastq_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_bam" {
   bucket = "dev-mosaic-bam"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -86,7 +86,7 @@ resource "aws_s3_bucket" "dev_bam" {
 
 resource "aws_s3_bucket_versioning" "dev_bam_versioning" {
   bucket = aws_s3_bucket.dev_bam.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -130,7 +130,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_bam_lifecycle" {
       days          = local.short_term_lifecycle_rule.transition.days
       storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
-    
+
     expiration {
       days = local.short_term_lifecycle_rule.expiration.days
     }
@@ -138,7 +138,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_bam_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_bam_notification" {
-  bucket = aws_s3_bucket.dev_bam.id
+  bucket      = aws_s3_bucket.dev_bam.id
   eventbridge = true
 }
 
@@ -147,7 +147,7 @@ resource "aws_s3_bucket_notification" "dev_bam_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_vcf" {
   bucket = "dev-mosaic-vcf"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -158,7 +158,7 @@ resource "aws_s3_bucket" "dev_vcf" {
 
 resource "aws_s3_bucket_versioning" "dev_vcf_versioning" {
   bucket = aws_s3_bucket.dev_vcf.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -202,7 +202,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_vcf_lifecycle" {
       days          = local.short_term_lifecycle_rule.transition.days
       storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
-    
+
     expiration {
       days = local.short_term_lifecycle_rule.expiration.days
     }
@@ -210,7 +210,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_vcf_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_vcf_notification" {
-  bucket = aws_s3_bucket.dev_vcf.id
+  bucket      = aws_s3_bucket.dev_vcf.id
   eventbridge = true
 }
 
@@ -219,7 +219,7 @@ resource "aws_s3_bucket_notification" "dev_vcf_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_filtered_vcf" {
   bucket = "dev-mosaic-filtered-vcf"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -230,7 +230,7 @@ resource "aws_s3_bucket" "dev_filtered_vcf" {
 
 resource "aws_s3_bucket_versioning" "dev_filtered_vcf_versioning" {
   bucket = aws_s3_bucket.dev_filtered_vcf.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -274,7 +274,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_filtered_vcf_lifecycle" {
       days          = local.short_term_lifecycle_rule.transition.days
       storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
-    
+
     expiration {
       days = local.short_term_lifecycle_rule.expiration.days
     }
@@ -282,7 +282,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_filtered_vcf_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_filtered_vcf_notification" {
-  bucket = aws_s3_bucket.dev_filtered_vcf.id
+  bucket      = aws_s3_bucket.dev_filtered_vcf.id
   eventbridge = true
 }
 
@@ -291,7 +291,7 @@ resource "aws_s3_bucket_notification" "dev_filtered_vcf_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_annotated_vcf" {
   bucket = "dev-mosaic-annotated-vcf"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -302,7 +302,7 @@ resource "aws_s3_bucket" "dev_annotated_vcf" {
 
 resource "aws_s3_bucket_versioning" "dev_annotated_vcf_versioning" {
   bucket = aws_s3_bucket.dev_annotated_vcf.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -346,7 +346,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_annotated_vcf_lifecycle" {
       days          = local.short_term_lifecycle_rule.transition.days
       storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
-    
+
     expiration {
       days = local.short_term_lifecycle_rule.expiration.days
     }
@@ -354,6 +354,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_annotated_vcf_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_annotated_vcf_notification" {
-  bucket = aws_s3_bucket.dev_annotated_vcf.id
+  bucket      = aws_s3_bucket.dev_annotated_vcf.id
   eventbridge = true
 }

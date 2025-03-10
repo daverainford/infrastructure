@@ -3,18 +3,18 @@
 # -----------------------------
 resource "aws_s3_bucket" "dev_user_input_fastq" {
   bucket = "dev-mosaic-user-input-fastq"
-  
+
   tags = merge(
     local.common_tags,
     {
-        type = "user_input"
+      type = "user_input"
     }
   )
 }
 
 resource "aws_s3_bucket_versioning" "dev_user_input_fastq_versioning" {
   bucket = aws_s3_bucket.dev_user_input_fastq.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -66,7 +66,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_fastq_lifecycle
 }
 
 resource "aws_s3_bucket_notification" "dev_user_input_fastq_notification" {
-  bucket = aws_s3_bucket.dev_user_input_fastq.id
+  bucket      = aws_s3_bucket.dev_user_input_fastq.id
   eventbridge = true
 }
 
@@ -75,18 +75,18 @@ resource "aws_s3_bucket_notification" "dev_user_input_fastq_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_user_input_bam" {
   bucket = "dev-mosaic-user-input-bam"
-  
+
   tags = merge(
     local.common_tags,
     {
-        type = "user_input"
+      type = "user_input"
     }
   )
 }
 
 resource "aws_s3_bucket_versioning" "dev_user_input_bam_versioning" {
   bucket = aws_s3_bucket.dev_user_input_bam.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -138,7 +138,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_bam_lifecycle" 
 }
 
 resource "aws_s3_bucket_notification" "dev_user_input_bam_notification" {
-  bucket = aws_s3_bucket.dev_user_input_bam.id
+  bucket      = aws_s3_bucket.dev_user_input_bam.id
   eventbridge = true
 }
 
@@ -147,18 +147,18 @@ resource "aws_s3_bucket_notification" "dev_user_input_bam_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_user_input_vcf" {
   bucket = "dev-mosaic-user-input-vcf"
-  
+
   tags = merge(
     local.common_tags,
     {
-        type = "user_input"
+      type = "user_input"
     }
   )
 }
 
 resource "aws_s3_bucket_versioning" "dev_user_input_vcf_versioning" {
   bucket = aws_s3_bucket.dev_user_input_vcf.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -210,6 +210,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_vcf_lifecycle" 
 }
 
 resource "aws_s3_bucket_notification" "dev_user_input_vcf_notification" {
-  bucket = aws_s3_bucket.dev_user_input_vcf.id
+  bucket      = aws_s3_bucket.dev_user_input_vcf.id
   eventbridge = true
 }

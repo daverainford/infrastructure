@@ -3,7 +3,7 @@
 # -----------------------------
 resource "aws_s3_bucket" "dev_archive" {
   bucket = "dev-mosaic-archive"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -14,7 +14,7 @@ resource "aws_s3_bucket" "dev_archive" {
 
 resource "aws_s3_bucket_versioning" "dev_archive_versioning" {
   bucket = aws_s3_bucket.dev_archive.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -53,7 +53,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_archive_lifecycle" {
   rule {
     id     = local.deep_archive_lifecycle_rule.id
     status = local.deep_archive_lifecycle_rule.status
-    
+
     transition {
       days          = local.deep_archive_lifecycle_rule.transition.days
       storage_class = local.deep_archive_lifecycle_rule.transition.storage_class
@@ -62,7 +62,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_archive_lifecycle" {
 }
 
 resource "aws_s3_bucket_notification" "dev_archive_notification" {
-  bucket = aws_s3_bucket.dev_archive.id
+  bucket      = aws_s3_bucket.dev_archive.id
   eventbridge = true
 }
 
@@ -71,7 +71,7 @@ resource "aws_s3_bucket_notification" "dev_archive_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_logging" {
   bucket = "dev-mosaic-logging"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -82,7 +82,7 @@ resource "aws_s3_bucket" "dev_logging" {
 
 resource "aws_s3_bucket_versioning" "dev_logging_versioning" {
   bucket = aws_s3_bucket.dev_logging.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -135,7 +135,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_logging_lifecycle" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_omics_fallback" {
   bucket = "dev-mosaic-omics-fallback"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -146,7 +146,7 @@ resource "aws_s3_bucket" "dev_omics_fallback" {
 
 resource "aws_s3_bucket_versioning" "dev_omics_fallback_versioning" {
   bucket = aws_s3_bucket.dev_omics_fallback.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -198,7 +198,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_omics_fallback_lifecycle" 
 }
 
 resource "aws_s3_bucket_notification" "dev_omics_fallback_notification" {
-  bucket = aws_s3_bucket.dev_omics_fallback.id
+  bucket      = aws_s3_bucket.dev_omics_fallback.id
   eventbridge = true
 }
 
@@ -207,7 +207,7 @@ resource "aws_s3_bucket_notification" "dev_omics_fallback_notification" {
 # -----------------------------
 resource "aws_s3_bucket" "dev_reference_genomes" {
   bucket = "dev-mosaic-reference-genomes"
-  
+
   tags = merge(
     local.common_tags,
     {
@@ -218,7 +218,7 @@ resource "aws_s3_bucket" "dev_reference_genomes" {
 
 resource "aws_s3_bucket_versioning" "dev_reference_genomes_versioning" {
   bucket = aws_s3_bucket.dev_reference_genomes.id
-  
+
   versioning_configuration {
     status = "Enabled"
   }
@@ -266,6 +266,6 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_reference_genomes_lifecycl
 }
 
 resource "aws_s3_bucket_notification" "dev_reference_genomes_notification" {
-  bucket = aws_s3_bucket.dev_reference_genomes.id
+  bucket      = aws_s3_bucket.dev_reference_genomes.id
   eventbridge = true
 }

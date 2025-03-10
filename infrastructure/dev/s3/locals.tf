@@ -31,17 +31,17 @@ locals {
   short_term_lifecycle_rule = {
     id     = "short-term-data-lifecycle"
     status = "Enabled"
-    
+
     expiration = {
       days = local.lifecycle_configs.short_term.expiration_days
     }
   }
-  
+
   # Deep archive rule
   deep_archive_lifecycle_rule = {
     id     = "deep-archive-data-lifecycle"
     status = "Enabled"
-    
+
     transition = {
       days          = 0
       storage_class = "DEEP_ARCHIVE"
