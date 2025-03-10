@@ -12,8 +12,17 @@ locals {
   #-------------------------------------------------
   lifecycle_configs = {
     short_term = {
-      expiration_days = 30
+      expiration_days = 14
     }
+  }
+
+  #-------------------------------------------------
+  # KMS Key Configuration
+  #-------------------------------------------------
+  kms_key_settings = {
+    deletion_window_in_days = 10
+    enable_key_rotation     = true
+    key_usage               = "ENCRYPT_DECRYPT"
   }
 
   #-------------------------------------------------
@@ -35,8 +44,8 @@ locals {
     }
   }
   
-  archive_lifecycle_rule = {
-    id     = "-deep-archive-data-lifecycle"
+  deep_archive_lifecycle_rule = {
+    id     = "deep-archive-data-lifecycle"
     status = "Enabled"
     
     transition = {
