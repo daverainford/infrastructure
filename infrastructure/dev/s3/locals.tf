@@ -11,7 +11,6 @@ locals {
   # Lifecycle Configuration Parameters
   #-------------------------------------------------
   lifecycle_configs = {
-    # Short term data storage (30 days)
     short_term = {
       expiration_days = 30
     }
