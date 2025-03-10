@@ -16,17 +16,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_fastq_lifecycle
   bucket = aws_s3_bucket.dev_user_input_fastq.id
 
   rule {
-    id = "data-lifecycle"
-    status = "Enabled"
+    id     = local.short_term_lifecycle_rule.id
+    status = local.short_term_lifecycle_rule.status
 
-    # Explicitly set storage class to STANDARD
     transition {
-      days = 0
-      storage_class = "STANDARD"
+      days          = local.short_term_lifecycle_rule.transition.days
+      storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
 
     expiration {
-        days = local.lifecycle_configs.short_term.expiration_days
+      days = local.short_term_lifecycle_rule.expiration.days
     }
   }
 }
@@ -54,17 +53,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_bam_lifecycle" 
   bucket = aws_s3_bucket.dev_user_input_bam.id
 
   rule {
-    id = "data-lifecycle"
-    status = "Enabled"
+    id     = local.short_term_lifecycle_rule.id
+    status = local.short_term_lifecycle_rule.status
 
-    # Explicitly set storage class to STANDARD
     transition {
-      days = 0
-      storage_class = "STANDARD"
+      days          = local.short_term_lifecycle_rule.transition.days
+      storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
 
     expiration {
-        days = local.lifecycle_configs.short_term.expiration_days
+      days = local.short_term_lifecycle_rule.expiration.days
     }
   }
 }
@@ -92,17 +90,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "dev_user_input_vcf_lifecycle" 
   bucket = aws_s3_bucket.dev_user_input_vcf.id
 
   rule {
-    id = "data-lifecycle"
-    status = "Enabled"
+    id     = local.short_term_lifecycle_rule.id
+    status = local.short_term_lifecycle_rule.status
 
-    # Explicitly set storage class to STANDARD
     transition {
-      days = 0
-      storage_class = "STANDARD"
+      days          = local.short_term_lifecycle_rule.transition.days
+      storage_class = local.short_term_lifecycle_rule.transition.storage_class
     }
 
     expiration {
-        days = local.lifecycle_configs.short_term.expiration_days
+      days = local.short_term_lifecycle_rule.expiration.days
     }
   }
 }
